@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace TrainingSheet.Application.Commands.DeleteExercise
 {
-    public class DeleteExerciseCommand : IRequest<Unit>
+    public class DisableExerciseCommand : IRequest<Unit>
     {
         public int Id { get; private set; }
-        public DeleteExerciseCommand(int id)
+        public DisableExerciseCommand(int id)
         {
             Id = id;
         }

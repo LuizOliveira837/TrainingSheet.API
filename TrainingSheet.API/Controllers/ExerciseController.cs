@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using TrainingSheet.Application.Commands;
 using TrainingSheet.Application.Commands.CreateExercise;
+using TrainingSheet.Application.Commands.DeleteExercise;
 using TrainingSheet.Application.Commands.UpdateExercise;
 using TrainingSheet.Application.InputModels.Exercise;
 using TrainingSheet.Application.Services.Interface;
@@ -53,23 +54,14 @@ namespace TrainingSheet.API.Controllers
 
         }
 
-        [HttpDelete]
-        public ActionResult Delete([FromRoute] InputDeleteModel input)
+        [HttpPatch("{id}/disable")]
+        public async Task<ActionResult> Disable([FromRoute] int id)
         {
-            if (input.Id == null) return BadRequest();
+            var command = new DisableExerciseCommand(id);
 
-            try
-            {
-                _service.Delete(input.Id);
-                return Ok();
+            await _mediator.Send(command);
 
-            }
-            catch (Exception e)
-            {
-
-                throw new Exception(e.Message);
-            }
-
+            return NoContent();
         }
 
         [HttpPut("{id}")]

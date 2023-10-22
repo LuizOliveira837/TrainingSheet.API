@@ -32,10 +32,14 @@ namespace TrainingSheet.Application.Services.Implementations
 
         public IList<ExerciseViewModel> GetAll()
         {
-            return _dbContext.Exercises
+            var exercices =  _dbContext.Exercises
+                .Where(e=> e.Status == Core.Enums.StatusEntity.Active)
                 .Select(e => new ExerciseViewModel(e.Id, e.ExerciseName))
                 .ToList();
-               
+
+
+            return exercices;
+
         }
 
         public ExerciseViewModel GetById(int id)

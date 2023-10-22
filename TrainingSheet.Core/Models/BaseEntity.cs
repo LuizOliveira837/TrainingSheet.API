@@ -19,5 +19,13 @@ namespace TrainingSheet.Core.Models
         public DateTime CreatedAt { get; private set; }
         public StatusEntity Status { get; set; }
 
+        public void Disable()
+        {
+            if(Status == StatusEntity.Active)
+            {
+                Status = StatusEntity.inactive;
+            }
+        }
+
     }
 }

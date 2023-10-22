@@ -17,5 +17,7 @@ namespace TrainingSheet.Core.Models
         public string ExerciseName { get; set; }
 
 
+
+
     }
 }
