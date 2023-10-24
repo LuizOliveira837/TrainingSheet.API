@@ -67,14 +67,11 @@ namespace TrainingSheet.API.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult> Update([FromRoute] int id, [FromBody] InputUpdateModel input)
         {
-
             var command = new UpdateExerciseCommand(id, input.ExerciseName);
 
             await _mediator.Send(command);
 
             return NoContent();
-
-
         }
 
     }
