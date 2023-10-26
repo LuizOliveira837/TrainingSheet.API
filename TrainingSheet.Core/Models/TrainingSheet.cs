@@ -20,7 +20,7 @@ namespace TrainingSheet.Core.Models
 
         public string TrainingSheetName { get; set; }
         public int StudentId { get; set; }
-        public Student Student { get; set; }
+        public Practitioner Student { get; set; }
         public DateTime StartedIn { get; set; }
         public DateTime FinishIn { get; set; }
 

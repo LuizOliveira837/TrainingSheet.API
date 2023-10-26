@@ -1,0 +1,15 @@
+C:\Users\Luiz.Rocha\source\repos\LuisFelipeCurso\TrainingSheet.API\TrainingSheet.Infraestructure\bin\Release\net5.0\TrainingSheet.Infraestructure.deps.json
+C:\Users\Luiz.Rocha\source\repos\LuisFelipeCurso\TrainingSheet.API\TrainingSheet.Infraestructure\bin\Release\net5.0\TrainingSheet.Infraestructure.dll
+C:\Users\Luiz.Rocha\source\repos\LuisFelipeCurso\TrainingSheet.API\TrainingSheet.Infraestructure\bin\Release\net5.0\TrainingSheet.Infraestructure.pdb
+C:\Users\Luiz.Rocha\source\repos\LuisFelipeCurso\TrainingSheet.API\TrainingSheet.Infraestructure\bin\Release\net5.0\TrainingSheet.Core.dll
+C:\Users\Luiz.Rocha\source\repos\LuisFelipeCurso\TrainingSheet.API\TrainingSheet.Infraestructure\bin\Release\net5.0\TrainingSheet.Core.pdb
+C:\Users\Luiz.Rocha\source\repos\LuisFelipeCurso\TrainingSheet.API\TrainingSheet.Infraestructure\obj\Release\net5.0\TrainingSheet.Infraestructure.csproj.AssemblyReference.cache
+C:\Users\Luiz.Rocha\source\repos\LuisFelipeCurso\TrainingSheet.API\TrainingSheet.Infraestructure\obj\Release\net5.0\TrainingSheet.Infraestructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Luiz.Rocha\source\repos\LuisFelipeCurso\TrainingSheet.API\TrainingSheet.Infraestructure\obj\Release\net5.0\TrainingSheet.Infraestructure.AssemblyInfoInputs.cache
+C:\Users\Luiz.Rocha\source\repos\LuisFelipeCurso\TrainingSheet.API\TrainingSheet.Infraestructure\obj\Release\net5.0\TrainingSheet.Infraestructure.AssemblyInfo.cs
+C:\Users\Luiz.Rocha\source\repos\LuisFelipeCurso\TrainingSheet.API\TrainingSheet.Infraestructure\obj\Release\net5.0\TrainingSheet.Infraestructure.csproj.CoreCompileInputs.cache
+C:\Users\Luiz.Rocha\source\repos\LuisFelipeCurso\TrainingSheet.API\TrainingSheet.Infraestructure\obj\Release\net5.0\TrainingSheet.Infraestructure.csproj.CopyComplete
+C:\Users\Luiz.Rocha\source\repos\LuisFelipeCurso\TrainingSheet.API\TrainingSheet.Infraestructure\obj\Release\net5.0\TrainingSheet.Infraestructure.dll
+C:\Users\Luiz.Rocha\source\repos\LuisFelipeCurso\TrainingSheet.API\TrainingSheet.Infraestructure\obj\Release\net5.0\refint\TrainingSheet.Infraestructure.dll
+C:\Users\Luiz.Rocha\source\repos\LuisFelipeCurso\TrainingSheet.API\TrainingSheet.Infraestructure\obj\Release\net5.0\TrainingSheet.Infraestructure.pdb
+C:\Users\Luiz.Rocha\source\repos\LuisFelipeCurso\TrainingSheet.API\TrainingSheet.Infraestructure\obj\Release\net5.0\ref\TrainingSheet.Infraestructure.dll

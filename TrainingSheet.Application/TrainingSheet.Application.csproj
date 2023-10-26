@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TrainingSheet.Core\TrainingSheet.Core.csproj" />
     <ProjectReference Include="..\TrainingSheet.Infraestructure\TrainingSheet.Infraestructure.csproj" />
   </ItemGroup>
 

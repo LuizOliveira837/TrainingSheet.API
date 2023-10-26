@@ -31,6 +31,9 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
+              "C:\\Users\\Luiz.Rocha\\source\\repos\\LuisFelipeCurso\\TrainingSheet.API\\TrainingSheet.Core\\TrainingSheet.Core.csproj": {
+                "projectPath": "C:\\Users\\Luiz.Rocha\\source\\repos\\LuisFelipeCurso\\TrainingSheet.API\\TrainingSheet.Core\\TrainingSheet.Core.csproj"
+              },
               "C:\\Users\\Luiz.Rocha\\source\\repos\\LuisFelipeCurso\\TrainingSheet.API\\TrainingSheet.Infraestructure\\TrainingSheet.Infraestructure.csproj": {
                 "projectPath": "C:\\Users\\Luiz.Rocha\\source\\repos\\LuisFelipeCurso\\TrainingSheet.API\\TrainingSheet.Infraestructure\\TrainingSheet.Infraestructure.csproj"
               }

@@ -752,6 +752,7 @@
       "MediatR.Extensions.Microsoft.DependencyInjection >= 10.0.0",
       "Microsoft.EntityFrameworkCore.InMemory >= 5.0.17",
       "Microsoft.Extensions.DependencyInjection >= 7.0.0",
+      "TrainingSheet.Core >= 1.0.0",
       "TrainingSheet.Infraestructure >= 1.0.0"
     ]
   },
@@ -786,6 +787,9 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
+            "C:\\Users\\Luiz.Rocha\\source\\repos\\LuisFelipeCurso\\TrainingSheet.API\\TrainingSheet.Core\\TrainingSheet.Core.csproj": {
+              "projectPath": "C:\\Users\\Luiz.Rocha\\source\\repos\\LuisFelipeCurso\\TrainingSheet.API\\TrainingSheet.Core\\TrainingSheet.Core.csproj"
+            },
             "C:\\Users\\Luiz.Rocha\\source\\repos\\LuisFelipeCurso\\TrainingSheet.API\\TrainingSheet.Infraestructure\\TrainingSheet.Infraestructure.csproj": {
               "projectPath": "C:\\Users\\Luiz.Rocha\\source\\repos\\LuisFelipeCurso\\TrainingSheet.API\\TrainingSheet.Infraestructure\\TrainingSheet.Infraestructure.csproj"
             }

@@ -14,7 +14,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
-using TrainingSheet.Application.Commands.CreateExercise;
+using TrainingSheet.Application.Commands.ExerciseCommands.CreateExercise;
 using TrainingSheet.Application.Services.Implementations;
 using TrainingSheet.Application.Services.Interface;
 using TrainingSheet.Infraestructure.Persistence;

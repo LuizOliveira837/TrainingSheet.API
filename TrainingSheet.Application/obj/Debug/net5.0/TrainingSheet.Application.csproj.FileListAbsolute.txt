@@ -1,17 +1,5 @@
-C:\Users\Luiz.Rocha\source\repos\LuisFelipeCurso\TrainingSheet.API\TrainingSheet.Application\bin\Debug\net5.0\TrainingSheet.Application.deps.json
-C:\Users\Luiz.Rocha\source\repos\LuisFelipeCurso\TrainingSheet.API\TrainingSheet.Application\bin\Debug\net5.0\TrainingSheet.Application.dll
-C:\Users\Luiz.Rocha\source\repos\LuisFelipeCurso\TrainingSheet.API\TrainingSheet.Application\bin\Debug\net5.0\TrainingSheet.Application.pdb
-C:\Users\Luiz.Rocha\source\repos\LuisFelipeCurso\TrainingSheet.API\TrainingSheet.Application\bin\Debug\net5.0\TrainingSheet.Core.dll
-C:\Users\Luiz.Rocha\source\repos\LuisFelipeCurso\TrainingSheet.API\TrainingSheet.Application\bin\Debug\net5.0\TrainingSheet.Infraestructure.dll
-C:\Users\Luiz.Rocha\source\repos\LuisFelipeCurso\TrainingSheet.API\TrainingSheet.Application\bin\Debug\net5.0\TrainingSheet.Infraestructure.pdb
-C:\Users\Luiz.Rocha\source\repos\LuisFelipeCurso\TrainingSheet.API\TrainingSheet.Application\bin\Debug\net5.0\TrainingSheet.Core.pdb
 C:\Users\Luiz.Rocha\source\repos\LuisFelipeCurso\TrainingSheet.API\TrainingSheet.Application\obj\Debug\net5.0\TrainingSheet.Application.csproj.AssemblyReference.cache
 C:\Users\Luiz.Rocha\source\repos\LuisFelipeCurso\TrainingSheet.API\TrainingSheet.Application\obj\Debug\net5.0\TrainingSheet.Application.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Luiz.Rocha\source\repos\LuisFelipeCurso\TrainingSheet.API\TrainingSheet.Application\obj\Debug\net5.0\TrainingSheet.Application.AssemblyInfoInputs.cache
 C:\Users\Luiz.Rocha\source\repos\LuisFelipeCurso\TrainingSheet.API\TrainingSheet.Application\obj\Debug\net5.0\TrainingSheet.Application.AssemblyInfo.cs
 C:\Users\Luiz.Rocha\source\repos\LuisFelipeCurso\TrainingSheet.API\TrainingSheet.Application\obj\Debug\net5.0\TrainingSheet.Application.csproj.CoreCompileInputs.cache
-C:\Users\Luiz.Rocha\source\repos\LuisFelipeCurso\TrainingSheet.API\TrainingSheet.Application\obj\Debug\net5.0\TrainingSheet.Application.csproj.CopyComplete
-C:\Users\Luiz.Rocha\source\repos\LuisFelipeCurso\TrainingSheet.API\TrainingSheet.Application\obj\Debug\net5.0\TrainingSheet.Application.dll
-C:\Users\Luiz.Rocha\source\repos\LuisFelipeCurso\TrainingSheet.API\TrainingSheet.Application\obj\Debug\net5.0\refint\TrainingSheet.Application.dll
-C:\Users\Luiz.Rocha\source\repos\LuisFelipeCurso\TrainingSheet.API\TrainingSheet.Application\obj\Debug\net5.0\TrainingSheet.Application.pdb
-C:\Users\Luiz.Rocha\source\repos\LuisFelipeCurso\TrainingSheet.API\TrainingSheet.Application\obj\Debug\net5.0\ref\TrainingSheet.Application.dll

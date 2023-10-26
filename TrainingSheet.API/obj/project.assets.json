@@ -374,6 +374,7 @@
           "MediatR.Extensions.Microsoft.DependencyInjection": "10.0.0",
           "Microsoft.EntityFrameworkCore.InMemory": "5.0.17",
           "Microsoft.Extensions.DependencyInjection": "7.0.0",
+          "TrainingSheet.Core": "1.0.0",
           "TrainingSheet.Infraestructure": "1.0.0"
         },
         "compile": {

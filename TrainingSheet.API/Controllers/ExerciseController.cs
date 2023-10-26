@@ -1,14 +1,13 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Threading.Tasks;
-using TrainingSheet.Application.Commands;
-using TrainingSheet.Application.Commands.CreateExercise;
-using TrainingSheet.Application.Commands.DeleteExercise;
-using TrainingSheet.Application.Commands.UpdateExercise;
+using TrainingSheet.Application.Commands.ExerciseCommands.CreateExercise;
+using TrainingSheet.Application.Commands.ExerciseCommands.DisableExercise;
+using TrainingSheet.Application.Commands.ExerciseCommands.UpdateExercise;
 using TrainingSheet.Application.InputModels.Exercise;
+using TrainingSheet.Application.Querys.ExerciseGetAll;
+using TrainingSheet.Application.Querys.ExerciseGetById;
 using TrainingSheet.Application.Services.Interface;
-using TrainingSheet.Core.Models;
 
 namespace TrainingSheet.API.Controllers
 {
@@ -25,19 +24,20 @@ namespace TrainingSheet.API.Controllers
         }
 
         [HttpGet]
-        public ActionResult GetAll()
+        public async Task<ActionResult> GetAll()
         {
-            var exercises = _service.GetAll();
+            var command = new ExerciseGetAllQuery();
+            var exercises = await _mediator.Send(command);
 
             return Ok(exercises);
         }
 
         [HttpGet("{id}")]
-        public ActionResult GetById([FromRoute] int id)
+        public async Task<ActionResult> GetById([FromRoute] int id)
         {
-            if (id == null) return BadRequest();
+            var command = new ExerciseGetByIdQuery(id);
 
-            var exerciseViewModel = _service.GetById(id);
+            var exerciseViewModel = await _mediator.Send(command);
 
             return Ok(exerciseViewModel);
         }
