@@ -11,6 +11,7 @@ namespace TrainingSheet.Infraestructure.Persistence
     public class TrainingSheetDbContext : DbContext
     {
         public DbSet<Exercise> Exercises { get; set; }
+        public DbSet<Practitioner> Practitioners { get; set; }
 
         public TrainingSheetDbContext(DbContextOptions<TrainingSheetDbContext> options)
             : base(options)

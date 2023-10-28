@@ -45,3 +45,4 @@ C:\Users\Luiz.Rocha\source\repos\LuisFelipeCurso\TrainingSheet.API\TrainingSheet
 C:\Users\Luiz.Rocha\source\repos\LuisFelipeCurso\TrainingSheet.API\TrainingSheet.API\obj\Release\net5.0\TrainingSheet.API.pdb
 C:\Users\Luiz.Rocha\source\repos\LuisFelipeCurso\TrainingSheet.API\TrainingSheet.API\obj\Release\net5.0\TrainingSheet.API.genruntimeconfig.cache
 C:\Users\Luiz.Rocha\source\repos\LuisFelipeCurso\TrainingSheet.API\TrainingSheet.API\obj\Release\net5.0\ref\TrainingSheet.API.dll
+C:\Users\Luiz.Rocha\source\repos\LuisFelipeCurso\TrainingSheet.API\TrainingSheet.API\obj\Release\net5.0\TrainingSheet.API.MvcApplicationPartsAssemblyInfo.cs

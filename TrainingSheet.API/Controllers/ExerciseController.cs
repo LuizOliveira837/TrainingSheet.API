@@ -8,6 +8,7 @@ using TrainingSheet.Application.InputModels.Exercise;
 using TrainingSheet.Application.Querys.ExerciseGetAll;
 using TrainingSheet.Application.Querys.ExerciseGetById;
 using TrainingSheet.Application.Services.Interface;
+using TrainingSheet.Application.ViewModels.Exercise;
 
 namespace TrainingSheet.API.Controllers
 {
@@ -33,7 +34,7 @@ namespace TrainingSheet.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult> GetById([FromRoute] int id)
+        public async Task<ActionResult<ExerciseViewModel>> GetById([FromRoute] int id)
         {
             var command = new ExerciseGetByIdQuery(id);
 

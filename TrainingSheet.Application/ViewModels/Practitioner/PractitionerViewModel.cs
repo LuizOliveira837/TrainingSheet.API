@@ -8,7 +8,7 @@ namespace TrainingSheet.Application.ViewModels.Practitioner
 {
     public class PractitionerViewModel
     {
-        public PractitionerViewModel(string fullName, string birthDate, string email)
+        public PractitionerViewModel(string fullName, DateTime birthDate, string email)
         {
             FullName = fullName;
             BirthDate = birthDate;
@@ -16,7 +16,7 @@ namespace TrainingSheet.Application.ViewModels.Practitioner
         }
 
         public string FullName { get; private set; }
-        public string BirthDate { get; set; }
+        public DateTime BirthDate { get; set; }
         public string Email { get; set; }
     }
 }
