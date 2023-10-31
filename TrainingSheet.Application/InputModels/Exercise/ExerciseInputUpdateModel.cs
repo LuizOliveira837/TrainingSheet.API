@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace TrainingSheet.Application.InputModels.Exercise
 {
-    public class InputUpdateModel
+    public class ExerciseInputUpdateModel
     {
-        public InputUpdateModel(string exerciseName)
+        public ExerciseInputUpdateModel(string exerciseName)
         {
             ExerciseName = exerciseName;
         }

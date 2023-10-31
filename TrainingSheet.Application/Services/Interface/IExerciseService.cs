@@ -13,8 +13,8 @@ namespace TrainingSheet.Application.Services.Interface
 
         public IList<ExerciseViewModel> GetAll();
         public ExerciseViewModel GetById(int id);
-        public int Create(InputCreateModel input);
+        public int Create(ExerciseInputCreateModel input);
         public void Delete(int id);
-        public void Update(int id, InputUpdateModel input);
+        public void Update(int id, ExerciseInputUpdateModel input);
     }
 }

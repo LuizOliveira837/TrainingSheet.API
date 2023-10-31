@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TrainingSheet.Core.Enums;
 
 namespace TrainingSheet.Core.Models
 {
@@ -21,6 +22,15 @@ namespace TrainingSheet.Core.Models
         public DateTime BirthDate { get; set; }
         public string Email { get; private set; }
         public string Password { get; private set; }
+
+        public void Update(string fullName, DateTime birthdate, string email)
+        {
+            if (this.Status == StatusEntity.inactive) return;
+
+            FullName = fullName;
+            BirthDate = birthdate;
+            Email = email;
+        }
 
 
     }

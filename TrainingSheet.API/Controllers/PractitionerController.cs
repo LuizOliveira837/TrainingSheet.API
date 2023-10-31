@@ -4,6 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TrainingSheet.Application.Commands.PractitionerCommands.CreatePractitioner;
+using TrainingSheet.Application.Commands.PractitionerCommands.DisablePractitioner;
+using TrainingSheet.Application.Commands.PractitionerCommands.UpdatePractitioner;
 using TrainingSheet.Application.InputModels.Practitioner;
 using TrainingSheet.Application.Querys.PractitionerGetAll;
 using TrainingSheet.Application.Querys.PractitionerGetById;
@@ -55,15 +57,24 @@ namespace TrainingSheet.API.Controllers
         }
 
         [HttpPut("{id}/update")]
-        public ActionResult Put(int id)
+        public async Task<ActionResult> Put([FromRoute] int id, [FromBody] PractitionerInputUpdateModel input)
         {
-            return Ok("Ola");
+            var command = new UpdatePractitionerCommand(id, input.FullName, input.BirthDate, input.Email);
+
+            await _mediator.Send(command);
+
+            return NoContent();
         }
 
         [HttpPatch("{id}/disable")]
-        public ActionResult Disable([FromRoute] int id)
+        public async Task<ActionResult> Disable(int id)
         {
-            return Ok("Ola");
+
+            var command = new DisablePractitionerCommand(id);
+
+            await _mediator.Send(command);
+
+            return NoContent();
         }
 
 

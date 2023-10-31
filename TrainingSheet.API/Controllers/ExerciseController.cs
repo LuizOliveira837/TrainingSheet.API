@@ -45,7 +45,7 @@ namespace TrainingSheet.API.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult> Post([FromBody] InputCreateModel inputCreateModel)
+        public async Task<ActionResult> Post([FromBody] ExerciseInputCreateModel inputCreateModel)
         {
             var command = new CreateExerciseCommand(inputCreateModel.ExerciseName);
 
@@ -66,7 +66,7 @@ namespace TrainingSheet.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> Update([FromRoute] int id, [FromBody] InputUpdateModel input)
+        public async Task<ActionResult> Update([FromRoute] int id, [FromBody] ExerciseInputUpdateModel input)
         {
             var command = new UpdateExerciseCommand(id, input.ExerciseName);
 

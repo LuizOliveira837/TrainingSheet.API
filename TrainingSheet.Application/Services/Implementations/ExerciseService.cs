@@ -54,7 +54,7 @@ namespace TrainingSheet.Application.Services.Implementations
             return exerciseViewModel;
         }
 
-        public int Create(InputCreateModel input)
+        public int Create(ExerciseInputCreateModel input)
         {
             
             var exercise = new Exercise(input.ExerciseName);
@@ -67,7 +67,7 @@ namespace TrainingSheet.Application.Services.Implementations
 
         }
 
-        public void Update(int id, InputUpdateModel input)
+        public void Update(int id, ExerciseInputUpdateModel input)
         {
             var exercise = _dbContext.Exercises.FirstOrDefault(e =>  e.Id == id);
 
