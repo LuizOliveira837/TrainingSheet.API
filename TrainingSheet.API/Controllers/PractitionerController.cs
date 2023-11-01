@@ -9,8 +9,7 @@ using TrainingSheet.Application.Commands.PractitionerCommands.UpdatePractitioner
 using TrainingSheet.Application.InputModels.Practitioner;
 using TrainingSheet.Application.Querys.PractitionerGetAll;
 using TrainingSheet.Application.Querys.PractitionerGetById;
-using TrainingSheet.Application.ViewModels.Exercise;
-using TrainingSheet.Application.ViewModels.Practitioner;
+using TrainingSheet.Application.ViewModels.PractitionerView;
 
 namespace TrainingSheet.API.Controllers
 {
@@ -40,7 +39,7 @@ namespace TrainingSheet.API.Controllers
         {
             var commad = new PractitionerGetByIdQuery(id);
 
-            var pratitioner = _mediator.Send(commad);
+            var pratitioner = await _mediator.Send(commad);
 
             return Ok(pratitioner);
         }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TrainingSheet.Application.ViewModels.Practitioner
+namespace TrainingSheet.Application.ViewModels.PractitionerView
 {
     public class PractitionerViewModel
     {
