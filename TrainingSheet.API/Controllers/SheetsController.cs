@@ -1,7 +1,10 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using TrainingSheet.Application.Commands.SheetCommands.AddExerciseSheet;
+using TrainingSheet.Application.Commands.SheetCommands.DisableSheet;
 using TrainingSheet.Application.Commands.TrainingSheetCommands;
+using TrainingSheet.Application.InputModels.Sheet;
 using TrainingSheet.Application.InputModels.TrainingSheet;
 using TrainingSheet.Application.Querys.SheetGetById;
 
@@ -17,11 +20,6 @@ namespace TrainingSheet.API.Controllers
             _mediator = mediator;
         }
 
-        [HttpGet]
-        public ActionResult Get()
-        {
-            return Ok();
-        }
 
         [HttpGet("{id}")]
         public async Task<ActionResult> GetById(int id)
@@ -43,9 +41,22 @@ namespace TrainingSheet.API.Controllers
             return Ok(id);
         }
 
-        [HttpPatch("{id}/disable")]
-        public ActionResult Disable()
+        [HttpPost("{id}/Add-exercise")]
+        public async Task<ActionResult> AddExercise([FromRoute] int id, [FromBody] SheetAddExerciseInputModel input)
         {
+            var command = new AddExerciseSheetCommand(id, input.ExerciseId, input.Series, input.Repetitons);
+
+            await _mediator.Send(command);
+
+            return NoContent();
+        }
+
+        [HttpPatch("{id}/Disable")]
+        public async Task<ActionResult> Disable([FromRoute] int id)
+        {
+            var command = new DisableSheetCommand(id);
+
+            await _mediator.Send(command);
             return Ok();
         }
     }
