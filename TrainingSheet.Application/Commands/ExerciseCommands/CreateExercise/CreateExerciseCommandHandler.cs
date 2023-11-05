@@ -1,7 +1,6 @@
 ﻿using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
-using TrainingSheet.Application.Services.Interface;
 using TrainingSheet.Core.Models;
 using TrainingSheet.Infraestructure.Persistence;
 
@@ -10,7 +9,7 @@ namespace TrainingSheet.Application.Commands.ExerciseCommands.CreateExercise
     public class CreateExerciseCommandHandler : IRequestHandler<CreateExerciseCommand, int>
     {
         public readonly TrainingSheetDbContext _dbContext;
-        public CreateExerciseCommandHandler(IExerciseService service, TrainingSheetDbContext dbContext)
+        public CreateExerciseCommandHandler(TrainingSheetDbContext dbContext)
         {
             _dbContext = dbContext;
         }

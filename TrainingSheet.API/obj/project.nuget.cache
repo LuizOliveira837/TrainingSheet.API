@@ -1,9 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "Q1Vg/J/M8hnxW4+M87oMAfLRzvmk+ygxdrSTL9irfWGdLCNtdO8W/F+ckahW09FYA7Qk7qaFLqAslAzROqRI+w==",
+  "dgSpecHash": "aWCxCk0GnKAeSVdwF+4/kwyQlG+nbIO6OnIt1qgiUxicix10Zp/P8r+qrGRPCZzcw3Che5HwoZHSevp96OkHMQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Luiz.Rocha\\source\\repos\\LuisFelipeCurso\\TrainingSheet.API\\TrainingSheet.API\\TrainingSheet.API.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Luiz.Rocha\\.nuget\\packages\\fluentvalidation\\11.5.1\\fluentvalidation.11.5.1.nupkg.sha512",
+    "C:\\Users\\Luiz.Rocha\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.3.0\\fluentvalidation.aspnetcore.11.3.0.nupkg.sha512",
+    "C:\\Users\\Luiz.Rocha\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.5.1\\fluentvalidation.dependencyinjectionextensions.11.5.1.nupkg.sha512",
     "C:\\Users\\Luiz.Rocha\\.nuget\\packages\\mediatr\\10.0.0\\mediatr.10.0.0.nupkg.sha512",
     "C:\\Users\\Luiz.Rocha\\.nuget\\packages\\mediatr.contracts\\1.0.0\\mediatr.contracts.1.0.0.nupkg.sha512",
     "C:\\Users\\Luiz.Rocha\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\10.0.0\\mediatr.extensions.microsoft.dependencyinjection.10.0.0.nupkg.sha512",

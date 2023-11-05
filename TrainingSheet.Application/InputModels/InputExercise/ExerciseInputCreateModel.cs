@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TrainingSheet.Application.InputModels.Exercise
+namespace TrainingSheet.Application.InputModels.InputExercise
 {
-    public class ExerciseInputUpdateModel
+    public class ExerciseInputCreateModel
     {
-        public ExerciseInputUpdateModel(string exerciseName)
+        public ExerciseInputCreateModel(string exerciseName)
         {
             ExerciseName = exerciseName;
         }

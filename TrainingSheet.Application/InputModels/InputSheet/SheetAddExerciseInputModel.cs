@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TrainingSheet.Application.InputModels.Sheet
+namespace TrainingSheet.Application.InputModels.InputSheet
 {
     public class SheetAddExerciseInputModel
     {

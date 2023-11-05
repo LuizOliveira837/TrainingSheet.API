@@ -46,3 +46,6 @@ C:\Users\Luiz.Rocha\source\repos\LuisFelipeCurso\TrainingSheet.API\TrainingSheet
 C:\Users\Luiz.Rocha\source\repos\LuisFelipeCurso\TrainingSheet.API\TrainingSheet.API\obj\Debug\net5.0\TrainingSheet.API.pdb
 C:\Users\Luiz.Rocha\source\repos\LuisFelipeCurso\TrainingSheet.API\TrainingSheet.API\obj\Debug\net5.0\TrainingSheet.API.genruntimeconfig.cache
 C:\Users\Luiz.Rocha\source\repos\LuisFelipeCurso\TrainingSheet.API\TrainingSheet.API\obj\Debug\net5.0\ref\TrainingSheet.API.dll
+C:\Users\Luiz.Rocha\source\repos\LuisFelipeCurso\TrainingSheet.API\TrainingSheet.API\bin\Debug\net5.0\FluentValidation.dll
+C:\Users\Luiz.Rocha\source\repos\LuisFelipeCurso\TrainingSheet.API\TrainingSheet.API\bin\Debug\net5.0\FluentValidation.DependencyInjectionExtensions.dll
+C:\Users\Luiz.Rocha\source\repos\LuisFelipeCurso\TrainingSheet.API\TrainingSheet.API\bin\Debug\net5.0\FluentValidation.AspNetCore.dll

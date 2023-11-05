@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using TrainingSheet.Application.ViewModels.Exercise;
+using TrainingSheet.Application.ViewModels.ExerciseView;
 using TrainingSheet.Infraestructure.Persistence;
 
 namespace TrainingSheet.Application.Querys.ExerciseGetAll

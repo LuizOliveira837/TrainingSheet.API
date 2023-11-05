@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TrainingSheet.Core.Enums;
 
-namespace TrainingSheet.Application.ViewModels.Exercise
+namespace TrainingSheet.Application.ViewModels.ExerciseView
 {
     public class ExerciseViewModel
     {

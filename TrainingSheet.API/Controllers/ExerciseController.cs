@@ -1,14 +1,18 @@
-﻿using MediatR;
+﻿using FluentValidation;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Linq;
 using System.Threading.Tasks;
 using TrainingSheet.Application.Commands.ExerciseCommands.CreateExercise;
 using TrainingSheet.Application.Commands.ExerciseCommands.DisableExercise;
 using TrainingSheet.Application.Commands.ExerciseCommands.UpdateExercise;
-using TrainingSheet.Application.InputModels.Exercise;
+using TrainingSheet.Application.InputModels.InputExercise;
 using TrainingSheet.Application.Querys.ExerciseGetAll;
 using TrainingSheet.Application.Querys.ExerciseGetById;
-using TrainingSheet.Application.Services.Interface;
-using TrainingSheet.Application.ViewModels.Exercise;
+using TrainingSheet.Application.Validators;
+using TrainingSheet.Application.ViewModels.ExerciseView;
+using TrainingSheet.Core.Error;
 
 namespace TrainingSheet.API.Controllers
 {
@@ -16,11 +20,10 @@ namespace TrainingSheet.API.Controllers
     [Route("[controller]")]
     public class ExerciseController : ControllerBase
     {
-        public readonly IExerciseService _service;
         public readonly IMediator _mediator;
-        public ExerciseController(IExerciseService service, IMediator mediator)
+
+        public ExerciseController(IMediator mediator)
         {
-            _service = service;
             _mediator = mediator;
         }
 
@@ -45,13 +48,26 @@ namespace TrainingSheet.API.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult> Post([FromBody] ExerciseInputCreateModel inputCreateModel)
+        public async Task<ActionResult> Post([FromBody] ExerciseInputCreateModel input)
         {
-            var command = new CreateExerciseCommand(inputCreateModel.ExerciseName);
+            ExerciseInputModelValidator validator = new();
+          
+            var resultValidator = await validator.ValidateAsync(input);
+
+            if (!resultValidator.IsValid) {
+
+                var messageError = resultValidator
+                .Errors
+                    .Select(e => new MessageError(e.ErrorCode, e.ErrorMessage));
+
+                return BadRequest(messageError);
+            }
+
+            var command = new CreateExerciseCommand(input.ExerciseName);
 
             var id = await _mediator.Send(command);
 
-            return CreatedAtAction(nameof(GetById), new { id = id }, inputCreateModel);
+            return CreatedAtAction(nameof(GetById), new { id = id }, input);
 
         }
 
@@ -66,8 +82,22 @@ namespace TrainingSheet.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> Update([FromRoute] int id, [FromBody] ExerciseInputUpdateModel input)
+        public async Task<ActionResult> Update([FromRoute] int id, [FromBody] ExerciseInputCreateModel input)
         {
+            ExerciseInputModelValidator validator = new();
+
+            var resultValidator = await validator.ValidateAsync(input);
+
+            if (!resultValidator.IsValid)
+            {
+
+                var messageError = resultValidator
+                .Errors
+                    .Select(e => new MessageError(e.ErrorCode, e.ErrorMessage));
+
+                return BadRequest(messageError);
+            }
+
             var command = new UpdateExerciseCommand(id, input.ExerciseName);
 
             await _mediator.Send(command);

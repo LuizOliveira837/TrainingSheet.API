@@ -1,3 +1,5 @@
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -8,15 +10,16 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using TrainingSheet.Application.Commands.ExerciseCommands.CreateExercise;
-using TrainingSheet.Application.Services.Implementations;
-using TrainingSheet.Application.Services.Interface;
+using TrainingSheet.Application.Validators;
 using TrainingSheet.Infraestructure.Persistence;
 
 namespace TrainingSheet.API
@@ -35,10 +38,11 @@ namespace TrainingSheet.API
         {
 
             services.AddDbContext<TrainingSheetDbContext>(opt => opt.UseInMemoryDatabase("TrainingSheetDb"));
-            
-            services.AddScoped<IExerciseService, ExerciseService>();
 
-            services.AddControllers();
+            services
+                .AddControllers();
+
+            services.AddValidatorsFromAssemblyContaining<ExerciseInputModelValidator>();
 
             services.AddMediatR(typeof(CreateExerciseCommand));
 
