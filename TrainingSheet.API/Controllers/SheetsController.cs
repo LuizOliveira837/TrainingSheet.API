@@ -38,7 +38,7 @@ namespace TrainingSheet.API.Controllers
         [HttpGet("sheet-exercises/{PractitionerId}/{SheetId}")]
         public async Task<ActionResult> GetSheetsExercises(int PractitionerId, int SheetId)
         {
-            var query = new SheetGetSheetsExercisesQuery(SheetId, PractitionerId);
+            var query = new SheetGetSheetsExercisesQuery(PractitionerId, SheetId);
 
             await _mediator.Send(query);
 

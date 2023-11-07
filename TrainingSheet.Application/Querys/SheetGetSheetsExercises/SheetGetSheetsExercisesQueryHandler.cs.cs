@@ -26,7 +26,8 @@ namespace TrainingSheet.Application.Querys.SheetGetSheetsExercises
             var sheet =  _dbContext
                 .SheetExercises
                 .Include(e=> e.Exercise)
-                .Where(s => s.SheetId == request.SheetId)
+                .Include(e=> e.Sheet)
+                .Where(s => s.SheetId == request.SheetId && s.Sheet.PractitionerId == request.PractitionerId)
                 .Select(se=> new SheetExerciseViewModel(se.Exercise.ExerciseName, se.Series, se.Repetitons))
                 .ToList();
 
