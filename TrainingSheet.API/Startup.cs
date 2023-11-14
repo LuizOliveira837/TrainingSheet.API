@@ -20,7 +20,9 @@ using System.Reflection;
 using System.Threading.Tasks;
 using TrainingSheet.Application.Commands.ExerciseCommands.CreateExercise;
 using TrainingSheet.Application.Validators;
+using TrainingSheet.Core.Repositories;
 using TrainingSheet.Infraestructure.Persistence;
+using TrainingSheet.Infraestructure.Repositories;
 
 namespace TrainingSheet.API
 {
@@ -38,6 +40,8 @@ namespace TrainingSheet.API
         {
 
             services.AddDbContext<TrainingSheetDbContext>(opt => opt.UseInMemoryDatabase("TrainingSheetDb"));
+
+            services.AddScoped<IExerciseRepository, ExerciseRepository>();
 
             services
                 .AddControllers();

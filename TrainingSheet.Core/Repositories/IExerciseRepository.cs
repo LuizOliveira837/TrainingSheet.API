@@ -7,12 +7,11 @@ using TrainingSheet.Core.Models;
 
 namespace TrainingSheet.Core.Repositories
 {
-    interface  IExerciseRepository
+    public interface IExerciseRepository
     {
-        public  void CreateAsync();
-        public  void UpdateAsync();
-        public  void DisableAsync();
+        public Task<int> CreateAsync(string exerciseName);
+        public void DisableAsync(int id);
         public Task<IList<Exercise>> GetAllAsync();
-        public Task<Exercise> GetById();
+        public Task<Exercise> GetById(int id);
     }
 }

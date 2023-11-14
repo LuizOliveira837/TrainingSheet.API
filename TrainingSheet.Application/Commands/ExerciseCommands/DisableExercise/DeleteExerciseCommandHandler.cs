@@ -6,27 +6,21 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using TrainingSheet.Core.Repositories;
 using TrainingSheet.Infraestructure.Persistence;
 
 namespace TrainingSheet.Application.Commands.ExerciseCommands.DisableExercise
 {
     public class DeleteExerciseCommandHandler : IRequestHandler<DisableExerciseCommand, Unit>
     {
-        public readonly TrainingSheetDbContext _dbContext;
-        public DeleteExerciseCommandHandler(TrainingSheetDbContext dbContext)
+        public readonly IExerciseRepository _exerciseRepository;
+        public DeleteExerciseCommandHandler(IExerciseRepository exerciseRepository)
         {
-            _dbContext = dbContext;
+            _exerciseRepository = exerciseRepository;
         }
         public async Task<Unit> Handle(DisableExerciseCommand request, CancellationToken cancellationToken)
         {
-            var exercise = await _dbContext.Exercises
-                .FirstOrDefaultAsync(x => x.Id == request.Id);
-
-            if (exercise == null) throw new NullReferenceException();
-
-            exercise.Disable();
-
-            _dbContext.SaveChanges();
+            _exerciseRepository.DisableAsync(request.Id);
 
             return Unit.Value;
         }
