@@ -6,22 +6,23 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using TrainingSheet.Application.ViewModels.ExerciseView;
+using TrainingSheet.Core.Repositories;
 using TrainingSheet.Infraestructure.Persistence;
 
 namespace TrainingSheet.Application.Querys.ExerciseGetAll
 {
     public class ExerciseGetAllQueryHandler : IRequestHandler<ExerciseGetAllQuery, IList<ExerciseViewModel>>
     {
-        public readonly TrainingSheetDbContext _dbContext;
-        public ExerciseGetAllQueryHandler(TrainingSheetDbContext dbContext)
+        public readonly IExerciseRepository _repository;
+        public ExerciseGetAllQueryHandler(IExerciseRepository repository)
         {
-            _dbContext= dbContext;
+            _repository = repository;
         }
         public async Task<IList<ExerciseViewModel>> Handle(ExerciseGetAllQuery request, CancellationToken cancellationToken)
         {
+            var exercises = await _repository.GetAllAsync();
 
-            return  _dbContext.Exercises
-                .Where(e => e.Status == Core.Enums.StatusEntity.Active)
+            return exercises
                 .Select(e => new ExerciseViewModel(e.Id, e.ExerciseName))
                 .ToList();
         }

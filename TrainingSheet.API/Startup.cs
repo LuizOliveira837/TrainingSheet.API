@@ -42,6 +42,7 @@ namespace TrainingSheet.API
             services.AddDbContext<TrainingSheetDbContext>(opt => opt.UseInMemoryDatabase("TrainingSheetDb"));
 
             services.AddScoped<IExerciseRepository, ExerciseRepository>();
+            services.AddScoped<IPractitionerRepository, PractitionerRepository>();
 
             services
                 .AddControllers();

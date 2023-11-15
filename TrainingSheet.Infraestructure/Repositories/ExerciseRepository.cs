@@ -39,23 +39,31 @@ namespace TrainingSheet.Infraestructure.Repositories
 
             await _dbContext.SaveChangesAsync();
 
-
-
         }
 
-        public Task<IList<Exercise>> GetAllAsync()
+        public async Task<IList<Exercise>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var exercises = await _dbContext 
+                .Exercises
+                .Where(e => e.Status == Core.Enums.StatusEntity.Active)
+                .ToListAsync();
+
+            return exercises;
         }
 
-        public Task<Exercise> GetById(int id)
+        public async Task<Exercise> GetById(int id)
         {
-            throw new NotImplementedException();
+            var exercise = await _dbContext
+                .Exercises
+                .SingleAsync (e => e.Id == id);
+
+            return exercise;
         }
 
-        public void UpdateAsync(Exercise exercise)
+        public async void UpdateAsync(Exercise exercise)
         {
-            throw new NotImplementedException();
+            await _dbContext.SaveChangesAsync();
+
         }
     }
 }

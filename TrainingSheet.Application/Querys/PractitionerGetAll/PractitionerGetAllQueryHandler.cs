@@ -6,27 +6,29 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using TrainingSheet.Application.ViewModels.PractitionerView;
+using TrainingSheet.Core.Repositories;
 using TrainingSheet.Infraestructure.Persistence;
 
 namespace TrainingSheet.Application.Querys.PractitionerGetAll
 {
     public class PractitionerGetAllQueryHandler : IRequestHandler<PractitionerGetAllQuery, IList<PractitionerViewModel>>
     {
-        public readonly TrainingSheetDbContext _dbContext;
+        public readonly IPractitionerRepository _repository;
 
-        public PractitionerGetAllQueryHandler(TrainingSheetDbContext dbContext)
+        public PractitionerGetAllQueryHandler(IPractitionerRepository repository)
         {
-            _dbContext = dbContext;
+            _repository = repository;
         }
 
         public async Task<IList<PractitionerViewModel>> Handle(PractitionerGetAllQuery request, CancellationToken cancellationToken)
         {
-            var practitioners = _dbContext.Practitioners
-                 .Where(p => p.Status == Core.Enums.StatusEntity.Active)
-                 .Select(P => new PractitionerViewModel(P.FullName, P.BirthDate, P.Email))
-                 .ToList();
+            var practitioners = _repository
+                .GetAllAsync();
 
-            return practitioners;
+            return practitioners
+                .Select(P => new PractitionerViewModel(P.FullName, P.BirthDate, P.Email))
+                .ToList();
+
         }
     }
 }

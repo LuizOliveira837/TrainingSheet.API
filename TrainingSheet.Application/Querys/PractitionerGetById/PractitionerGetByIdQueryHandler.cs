@@ -7,21 +7,22 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using TrainingSheet.Application.ViewModels.PractitionerView;
+using TrainingSheet.Core.Repositories;
 using TrainingSheet.Infraestructure.Persistence;
 
 namespace TrainingSheet.Application.Querys.PractitionerGetById
 {
     public class PractitionerGetByIdQueryHandler : IRequestHandler<PractitionerGetByIdQuery, PractitionerViewModel>
     {
-        private readonly TrainingSheetDbContext _dbContext;
+        private readonly IPractitionerRepository _repository;
 
-        public PractitionerGetByIdQueryHandler(TrainingSheetDbContext dbContext)
+        public PractitionerGetByIdQueryHandler(IPractitionerRepository repository)
         {
-            _dbContext = dbContext;
+            _repository = repository;
         }
         public async Task<PractitionerViewModel> Handle(PractitionerGetByIdQuery request, CancellationToken cancellationToken)
         {
-            var practitioner = await _dbContext.Practitioners.FirstOrDefaultAsync(p=> p.Id == request.Id);
+            var practitioner = await _repository.GetByIdAsync(request.Id);
 
             return new PractitionerViewModel(practitioner.FullName, practitioner.BirthDate, practitioner.Email);
         }

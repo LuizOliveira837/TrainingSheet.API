@@ -13,5 +13,6 @@ namespace TrainingSheet.Core.Repositories
         public void DisableAsync(int id);
         public Task<IList<Exercise>> GetAllAsync();
         public Task<Exercise> GetById(int id);
+        public void UpdateAsync(Exercise exercise);
     }
 }

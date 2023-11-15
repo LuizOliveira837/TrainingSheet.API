@@ -3,11 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TrainingSheet.Core.Models;
 
 namespace TrainingSheet.Core.Repositories
 {
-    interface IPractitionerRepository
+    public interface IPractitionerRepository
     {
-        public void CreateAsync();
+        public Task<int> CreateAsync(Practitioner practitioner);
+        public void DisableAsync(int id);
+        public void UpdateAsync();
+        public IList<Practitioner> GetAllAsync();
+        public Task<Practitioner> GetByIdAsync(int id);
+
     }
 }

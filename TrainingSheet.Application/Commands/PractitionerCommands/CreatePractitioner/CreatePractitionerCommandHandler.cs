@@ -6,28 +6,27 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using TrainingSheet.Core.Models;
+using TrainingSheet.Core.Repositories;
 using TrainingSheet.Infraestructure.Persistence;
 
 namespace TrainingSheet.Application.Commands.PractitionerCommands.CreatePractitioner
 {
     public class CreatePractitionerCommandHandler : IRequestHandler<CreatePractitionerCommand, int>
     {
-        private readonly TrainingSheetDbContext _dbContext;
+        private readonly IPractitionerRepository _repository;
 
-        public CreatePractitionerCommandHandler(TrainingSheetDbContext dbContext)
+        public CreatePractitionerCommandHandler(IPractitionerRepository repository)
         {
-            _dbContext = dbContext;
-           
+            _repository = repository;
+
         }
         public async Task<int> Handle(CreatePractitionerCommand request, CancellationToken cancellationToken)
         {
             var practitioner = new Practitioner(request.FullName, request.BirthDate, request.Email, request.Password);
 
-            await _dbContext.Practitioners.AddAsync(practitioner);
+            var id = await _repository.CreateAsync(practitioner);
 
-            await _dbContext.SaveChangesAsync();
-
-            return practitioner.Id;
+            return id;
         }
     }
 }
