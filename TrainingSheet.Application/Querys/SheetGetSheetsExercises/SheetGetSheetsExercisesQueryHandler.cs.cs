@@ -8,30 +8,30 @@ using System.Threading;
 using System.Threading.Tasks;
 using TrainingSheet.Application.ViewModels.ExerciseView;
 using TrainingSheet.Application.ViewModels.SheetView;
+using TrainingSheet.Core.Repositories;
 using TrainingSheet.Infraestructure.Persistence;
 
 namespace TrainingSheet.Application.Querys.SheetGetSheetsExercises
 {
     public class SheetGetSheetsExercisesQueryHandler : IRequestHandler<SheetGetSheetsExercisesQuery, IList<SheetExerciseViewModel>>
     {
-        private readonly TrainingSheetDbContext _dbContext;
+        private readonly ISheetRepository _repository;
 
-        public SheetGetSheetsExercisesQueryHandler(TrainingSheetDbContext dbContext)
+        public SheetGetSheetsExercisesQueryHandler(ISheetRepository repository)
         {
-            _dbContext = dbContext;
+            _repository = repository;
         }
         public async Task<IList<SheetExerciseViewModel>> Handle(SheetGetSheetsExercisesQuery request, CancellationToken cancellationToken)
         {
- 
-            var sheet =  _dbContext
-                .SheetExercises
-                .Include(e=> e.Exercise)
-                .Include(e=> e.Sheet)
-                .Where(s => s.SheetId == request.SheetId && s.Sheet.PractitionerId == request.PractitionerId)
-                .Select(se=> new SheetExerciseViewModel(se.Exercise.ExerciseName, se.Series, se.Repetitons))
-                .ToList();
 
-            return sheet;
+            var sheet = await _repository
+                .GetAllAsync(request.SheetId);
+
+
+
+            return sheet
+                .Select(s => new SheetExerciseViewModel(s.Exercise.ExerciseName, s.Series, s.Repetitons))
+                .ToList();
 
         }
     }

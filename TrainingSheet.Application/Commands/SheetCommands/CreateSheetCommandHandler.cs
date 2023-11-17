@@ -7,27 +7,26 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using TrainingSheet.Core.Models;
+using TrainingSheet.Core.Repositories;
 using TrainingSheet.Infraestructure.Persistence;
 
 namespace TrainingSheet.Application.Commands.TrainingSheetCommands
 {
     public class CreateSheetCommandHandler : IRequestHandler<CreateSheetCommand, int>
     {
-        private readonly TrainingSheetDbContext _dbContext;
+        private readonly ISheetRepository _repository;
 
-        public CreateSheetCommandHandler(TrainingSheetDbContext dbContext)
+        public CreateSheetCommandHandler(ISheetRepository repository)
         {
-            _dbContext = dbContext;
+            _repository = repository;
         }
         public async Task<int> Handle(CreateSheetCommand request, CancellationToken cancellationToken)
         {
             var trainingSheet = new Sheet(request.SheetName, request.PractitionerId, request.StartedIn, request.FinishIn);
 
-            await _dbContext.Sheets.AddAsync(trainingSheet);
+            var id = await _repository.CreateAsync(trainingSheet);
 
-            await _dbContext.SaveChangesAsync();
-
-            return trainingSheet.Id;
+            return id;
         }
     }
 }

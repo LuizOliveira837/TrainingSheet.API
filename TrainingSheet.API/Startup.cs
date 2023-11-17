@@ -43,6 +43,7 @@ namespace TrainingSheet.API
 
             services.AddScoped<IExerciseRepository, ExerciseRepository>();
             services.AddScoped<IPractitionerRepository, PractitionerRepository>();
+            services.AddScoped<ISheetRepository, SheetRepository>();
 
             services
                 .AddControllers();

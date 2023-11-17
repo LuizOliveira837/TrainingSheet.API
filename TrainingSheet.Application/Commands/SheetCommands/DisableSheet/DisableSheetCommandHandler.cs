@@ -6,27 +6,22 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using TrainingSheet.Core.Repositories;
 using TrainingSheet.Infraestructure.Persistence;
 
 namespace TrainingSheet.Application.Commands.SheetCommands.DisableSheet
 {
     public class DisableSheetCommandHandler : IRequestHandler<DisableSheetCommand, Unit>
     {
-        private readonly TrainingSheetDbContext _dbContext;
+        private readonly ISheetRepository _repository;
 
-        public DisableSheetCommandHandler(TrainingSheetDbContext dbContext)
+        public DisableSheetCommandHandler(ISheetRepository repository)
         {
-            _dbContext = dbContext;
+            _repository = repository;
         }
         public async Task<Unit> Handle(DisableSheetCommand request, CancellationToken cancellationToken)
         {
-            var sheet = await _dbContext
-                 .Sheets
-                 .SingleOrDefaultAsync(s => s.Id == request.Id);
-
-            sheet.Disable();
-
-            await _dbContext.SaveChangesAsync();
+            _repository.DisableAsync(request.Id);
 
             return Unit.Value;
         }

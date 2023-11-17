@@ -8,25 +8,22 @@ using System.Threading;
 using System.Threading.Tasks;
 using TrainingSheet.Application.ViewModels.SheetView;
 using TrainingSheet.Core.Models;
+using TrainingSheet.Core.Repositories;
 using TrainingSheet.Infraestructure.Persistence;
 
 namespace TrainingSheet.Application.Querys.SheetGetById
 {
     public class SheetGetByIdQueryHandler : IRequestHandler<SheetGetByIdQuery, SheetViewModel>
     {
-        private readonly TrainingSheetDbContext _dbContext;
+        private readonly ISheetRepository _repository;
 
-        public SheetGetByIdQueryHandler(TrainingSheetDbContext dbContext)
+        public SheetGetByIdQueryHandler(ISheetRepository repository)
         {
-            _dbContext = dbContext;
+            _repository = repository;
         }
         public async Task<SheetViewModel> Handle(SheetGetByIdQuery request, CancellationToken cancellationToken)
         {
-            var sheet = await _dbContext
-                .Sheets
-                .Where(s => s.Id == request.Id  && s.Status == Core.Enums.StatusEntity.Active)
-                .Include(a => a.Practitioner)
-                .SingleOrDefaultAsync();
+            var sheet = await _repository.GetByIdAsync(request.Id);
 
             return new SheetViewModel(
                 sheet.SheetName
