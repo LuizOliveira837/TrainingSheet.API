@@ -23,11 +23,11 @@ namespace TrainingSheet.Core.Models
         public string Email { get; private set; }
         public string Password { get; private set; }
 
-        public void Update(string fullName, DateTime birthdate, string email)
+        public void Update(Name name, DateTime birthdate, string email)
         {
             if (this.Status == StatusEntity.inactive) return;
 
-            FullName = fullName;
+            Name = name;
             BirthDate = birthdate;
             Email = email;
         }

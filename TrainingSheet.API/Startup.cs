@@ -23,6 +23,11 @@ using TrainingSheet.Application.Validators;
 using TrainingSheet.Core.Repositories;
 using TrainingSheet.Infraestructure.Persistence;
 using TrainingSheet.Infraestructure.Repositories;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using TrainingSheet.Core.Auth;
+using TrainingSheet.Infraestructure.Auth;
 
 namespace TrainingSheet.API
 {
@@ -44,9 +49,31 @@ namespace TrainingSheet.API
             services.AddScoped<IExerciseRepository, ExerciseRepository>();
             services.AddScoped<IPractitionerRepository, PractitionerRepository>();
             services.AddScoped<ISheetRepository, SheetRepository>();
+            services.AddScoped<IAuthService, AuthService>();
+
+            //services.AddAuthentication(options =>
+            //{
+            //    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            //    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            //})
+                //.AddJwtBearer(options =>
+                //{
+                //    options.TokenValidationParameters = new TokenValidationParameters
+                //    {
+                //        ValidateIssuer = false,
+                //        ValidateAudience = false,
+                //        ValidateLifetime = true,
+                //        ValidateIssuerSigningKey = true,
+                //        //ValidIssuer = Configuration["TokenConfigurations:Issuer"],
+                //        //ValidAudience = Configuration["TokenConfigurations:Audience"],
+                //        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Secret-JWTKey"]))
+                //    };
+                //});
+
 
             services
                 .AddControllers();
+
 
             services.AddValidatorsFromAssemblyContaining<ExerciseInputModelValidator>();
 
@@ -68,7 +95,12 @@ namespace TrainingSheet.API
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TrainingSheet.API v1"));
             }
 
+           
+
+            app.UseAuthentication();
+            app.UseAuthorization();
             app.UseHttpsRedirection();
+
 
             app.UseRouting();
 

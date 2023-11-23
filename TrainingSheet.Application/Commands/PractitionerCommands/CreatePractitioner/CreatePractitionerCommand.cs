@@ -4,20 +4,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TrainingSheet.Core.Models;
 
 namespace TrainingSheet.Application.Commands.PractitionerCommands.CreatePractitioner
 {
     public class CreatePractitionerCommand : IRequest<int>
     {
-        public CreatePractitionerCommand(string fullName, DateTime birthDate, string email, string password)
+        public CreatePractitionerCommand(Name name, DateTime birthDate, string email, string password)
         {
-            FullName = fullName;
+            Name = name;
             BirthDate = birthDate;
             Email = email;
             Password = password;
         }
 
-        public string FullName { get; private set; }
+        public Name Name { get; private set; }
         public DateTime BirthDate { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }

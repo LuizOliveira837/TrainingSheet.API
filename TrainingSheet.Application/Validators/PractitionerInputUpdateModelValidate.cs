@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TrainingSheet.Application.Commands.PractitionerCommands.UpdatePractitioner;
 using TrainingSheet.Application.InputModels.InputPractitioner;
 
 namespace TrainingSheet.Application.Validators
 {
-    public class PractitionerInputUpdateModelValidate : AbstractValidator<PractitionerInputUpdateModel>
+    public class PractitionerInputUpdateModelValidate : AbstractValidator<UpdatePractitionerCommand>
     {
 
         public PractitionerInputUpdateModelValidate()

@@ -5,15 +5,16 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using TrainingSheet.Application.Commands.PractitionerCommands.CreatePractitioner;
 using TrainingSheet.Application.InputModels.InputPractitioner;
 
 namespace TrainingSheet.Application.Validators
 {
-    public class PractitionerInputModelValidator : AbstractValidator<PractitionerInputModel>
+    public class PractitionerInputModelValidator : AbstractValidator<CreatePractitionerCommand>
     {
         public PractitionerInputModelValidator()
         {
-            RuleFor(p => p.FullName)
+            RuleFor(p => p.Name.FirstName)
                 .NotNull()
                 .WithMessage("O Nome não pode ser nula.")
                 .NotEmpty()

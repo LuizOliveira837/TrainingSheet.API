@@ -26,7 +26,7 @@ namespace TrainingSheet.Application.Querys.PractitionerGetAll
                 .GetAllAsync();
 
             return practitioners
-                .Select(P => new PractitionerViewModel(P.FullName, P.BirthDate, P.Email))
+                .Select(P => new PractitionerViewModel(P.Name, P.BirthDate, P.Email))
                 .ToList();
 
         }

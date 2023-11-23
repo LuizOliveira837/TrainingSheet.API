@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
@@ -26,6 +27,7 @@ namespace TrainingSheet.API.Controllers
         {
             _mediator = mediator;
         }
+       // [Authorize]
 
         [HttpGet]
         public async Task<ActionResult> GetAll()
@@ -47,13 +49,14 @@ namespace TrainingSheet.API.Controllers
         }
 
 
+        //[Authorize]
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] ExerciseInputCreateModel input)
         {
             ExerciseInputModelValidator validator = new();
           
             var resultValidator = await validator.ValidateAsync(input);
-
+            var t = ModelState.IsValid;    
             if (!resultValidator.IsValid) {
 
                 var messageError = resultValidator

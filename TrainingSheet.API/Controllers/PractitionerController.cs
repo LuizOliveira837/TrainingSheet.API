@@ -48,7 +48,7 @@ namespace TrainingSheet.API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Post([FromBody] PractitionerInputModel input)
+        public async Task<ActionResult> Post([FromBody] CreatePractitionerCommand input)
         {
 
             PractitionerInputModelValidator validator = new();
@@ -64,7 +64,7 @@ namespace TrainingSheet.API.Controllers
                 return BadRequest(messageError);
             }
 
-            var command = new CreatePractitionerCommand(input.FullName, input.BirthDate, input.Email, input.Password);
+            var command = new CreatePractitionerCommand(input.Name, input.BirthDate, input.Email, input.Password);
 
             var practitionerId = await _mediator.Send(command);
 
@@ -73,7 +73,7 @@ namespace TrainingSheet.API.Controllers
         }
 
         [HttpPut("{id}/update")]
-        public async Task<ActionResult> Put([FromRoute] int id, [FromBody] PractitionerInputUpdateModel input)
+        public async Task<ActionResult> Put([FromRoute] int id, [FromBody] UpdatePractitionerCommand input)
         {
             PractitionerInputUpdateModelValidate validator = new();
 
@@ -89,9 +89,7 @@ namespace TrainingSheet.API.Controllers
                 return BadRequest(messageError);
             }
 
-            var command = new UpdatePractitionerCommand(id, input.FullName, input.BirthDate, input.Email);
-
-            await _mediator.Send(command);
+            await _mediator.Send(input);
 
             return NoContent();
         }
