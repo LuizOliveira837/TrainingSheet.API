@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TrainingSheet.Application.Commands.TrainingSheetCommands
+namespace TrainingSheet.Application.Commands.SheetCommands.CreateSheet
 {
     public class CreateSheetCommand : IRequest<int>
     {

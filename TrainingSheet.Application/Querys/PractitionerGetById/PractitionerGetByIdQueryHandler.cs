@@ -24,7 +24,7 @@ namespace TrainingSheet.Application.Querys.PractitionerGetById
         {
             var practitioner = await _repository.GetByIdAsync(request.Id);
 
-            return new PractitionerViewModel(practitioner.Name, practitioner.BirthDate, practitioner.Email);
+            return new PractitionerViewModel(practitioner.FullName, practitioner.BirthDate, practitioner.Email);
         }
     }
 }

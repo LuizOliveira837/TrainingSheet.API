@@ -28,6 +28,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using TrainingSheet.Core.Auth;
 using TrainingSheet.Infraestructure.Auth;
+using TrainingSheet.Infraestructure;
 
 namespace TrainingSheet.API
 {
@@ -51,24 +52,26 @@ namespace TrainingSheet.API
             services.AddScoped<ISheetRepository, SheetRepository>();
             services.AddScoped<IAuthService, AuthService>();
 
-            //services.AddAuthentication(options =>
-            //{
-            //    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-            //    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            //})
-                //.AddJwtBearer(options =>
-                //{
-                //    options.TokenValidationParameters = new TokenValidationParameters
-                //    {
-                //        ValidateIssuer = false,
-                //        ValidateAudience = false,
-                //        ValidateLifetime = true,
-                //        ValidateIssuerSigningKey = true,
-                //        //ValidIssuer = Configuration["TokenConfigurations:Issuer"],
-                //        //ValidAudience = Configuration["TokenConfigurations:Audience"],
-                //        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Secret-JWTKey"]))
-                //    };
-                //});
+
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+                .AddJwtBearer(options =>
+                {
+                    options.SaveToken = true;
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidAudience = Settings.AUDIENCE,
+                        ValidIssuer = Settings.ISSUER,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Settings.SECRETKEY)),
+                        ValidateIssuerSigningKey = true,
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+
+                    };
+                });
 
 
             services
@@ -95,7 +98,7 @@ namespace TrainingSheet.API
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TrainingSheet.API v1"));
             }
 
-           
+
 
             app.UseAuthentication();
             app.UseAuthorization();

@@ -14,7 +14,7 @@ namespace TrainingSheet.Application.Validators
     {
         public PractitionerInputModelValidator()
         {
-            RuleFor(p => p.Name.FirstName)
+            RuleFor(p => p.FullName)
                 .NotNull()
                 .WithMessage("O Nome não pode ser nula.")
                 .NotEmpty()

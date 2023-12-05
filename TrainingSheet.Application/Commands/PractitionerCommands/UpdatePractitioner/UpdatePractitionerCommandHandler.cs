@@ -23,7 +23,7 @@ namespace TrainingSheet.Application.Commands.PractitionerCommands.UpdatePractiti
             var practitioner = await _repository
                 .GetByIdAsync(request.Id);
 
-            practitioner.Update(request.Name, request.BirthDate, request.Email);
+            practitioner.Update(request.FullName, request.BirthDate, request.Email);
 
             _repository.UpdateAsync();
 

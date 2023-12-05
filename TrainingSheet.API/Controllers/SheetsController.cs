@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Threading.Tasks;
 using TrainingSheet.Application.Commands.SheetCommands.AddExerciseSheet;
+using TrainingSheet.Application.Commands.SheetCommands.CreateSheet;
 using TrainingSheet.Application.Commands.SheetCommands.DisableSheet;
 using TrainingSheet.Application.Commands.TrainingSheetCommands;
 using TrainingSheet.Application.InputModels.InputSheet;
@@ -48,22 +49,8 @@ namespace TrainingSheet.API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Post([FromBody] SheetInputModel input)
+        public async Task<ActionResult> Post([FromBody] CreateSheetCommand command)
         {
-            SheetInputModelValidate validator = new();
-            var resultValidator = validator.Validate(input);
-
-            if (!resultValidator.IsValid)
-            {
-                var messageError = resultValidator
-                    .Errors
-                        .Select(e => new MessageError(e.ErrorCode, e.ErrorMessage));
-
-                return BadRequest(messageError);
-            }
-
-            var command = new CreateSheetCommand(input.SheetName, input.PractitionerId, input.StartedIn, input.FinishIn);
-
             var id = await _mediator.Send(command);
 
             return Ok(id);

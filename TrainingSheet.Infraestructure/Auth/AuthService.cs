@@ -28,11 +28,11 @@ namespace TrainingSheet.Infraestructure.Auth
         {
             using (SHA256 sha256 = SHA256.Create())
             {
-                byte[]hashBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                byte[] hashBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
 
                 StringBuilder stringBuilder = new StringBuilder();
 
-                for(var i = 0; i < hashBytes.Length; i++)
+                for (var i = 0; i < hashBytes.Length; i++)
                 {
                     stringBuilder.Append(hashBytes[i].ToString("x2"));
                 }
@@ -43,20 +43,30 @@ namespace TrainingSheet.Infraestructure.Auth
 
         public string GenerationToken(string email)
         {
-            var claims = new Claim[]
-            {
-                new Claim("Email", email)
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var issuer = Settings.ISSUER;
+            var audience = Settings.AUDIENCE;
+            var secretKey = Encoding.UTF8.GetBytes(Settings.SECRETKEY);
+            var listClaims = new List<Claim>() {
+                    new Claim(ClaimTypes.Email, email),
+                    new Claim(ClaimTypes.Role, "Practitioner")
             };
 
-            var issuer = _configuration["TokenConfigurations:Issuer"];
-            var audience = _configuration["TokenConfigurations:Audience"];
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["TokenConfigurations:Secret-JWTKey"]));
 
-            var signature = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
-            var token = new JwtSecurityToken(issuer: issuer, audience: audience, signingCredentials: signature);
+            var descriptor = new SecurityTokenDescriptor
+            {
+                Issuer = issuer,
+                Audience = audience,
+                Subject = new ClaimsIdentity(listClaims),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(secretKey), SecurityAlgorithms.HmacSha256),
+            };
 
-            return new JwtSecurityTokenHandler().WriteToken(token); 
+            var securityToken = tokenHandler.CreateToken(descriptor);
+
+            return tokenHandler.WriteToken(securityToken);
+
         }
     }
 }

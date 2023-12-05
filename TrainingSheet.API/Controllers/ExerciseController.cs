@@ -51,26 +51,12 @@ namespace TrainingSheet.API.Controllers
 
         //[Authorize]
         [HttpPost]
-        public async Task<ActionResult> Post([FromBody] ExerciseInputCreateModel input)
+        public async Task<ActionResult> Post([FromBody] CreateExerciseCommand command)
         {
-            ExerciseInputModelValidator validator = new();
-          
-            var resultValidator = await validator.ValidateAsync(input);
-            var t = ModelState.IsValid;    
-            if (!resultValidator.IsValid) {
-
-                var messageError = resultValidator
-                .Errors
-                    .Select(e => new MessageError(e.ErrorCode, e.ErrorMessage));
-
-                return BadRequest(messageError);
-            }
-
-            var command = new CreateExerciseCommand(input.ExerciseName);
-
+         
             var id = await _mediator.Send(command);
 
-            return CreatedAtAction(nameof(GetById), new { id = id }, input);
+            return CreatedAtAction(nameof(GetById), new { id = id }, command);
 
         }
 
@@ -85,11 +71,11 @@ namespace TrainingSheet.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> Update([FromRoute] int id, [FromBody] ExerciseInputCreateModel input)
+        public async Task<ActionResult> Update([FromRoute] int id, [FromBody] CreateExerciseCommand command)
         {
             ExerciseInputModelValidator validator = new();
 
-            var resultValidator = await validator.ValidateAsync(input);
+            var resultValidator = await validator.ValidateAsync(command);
 
             if (!resultValidator.IsValid)
             {
@@ -100,8 +86,6 @@ namespace TrainingSheet.API.Controllers
 
                 return BadRequest(messageError);
             }
-
-            var command = new UpdateExerciseCommand(id, input.ExerciseName);
 
             await _mediator.Send(command);
 

@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TrainingSheet.Application.Commands.PractitionerCommands.CreatePractitioner;
 using TrainingSheet.Application.Commands.PractitionerCommands.DisablePractitioner;
+using TrainingSheet.Application.Commands.PractitionerCommands.LoginPractitioner;
 using TrainingSheet.Application.Commands.PractitionerCommands.UpdatePractitioner;
 using TrainingSheet.Application.InputModels.InputPractitioner;
 using TrainingSheet.Application.Querys.PractitionerGetAll;
@@ -18,6 +20,7 @@ namespace TrainingSheet.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class PractitionerController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -48,23 +51,9 @@ namespace TrainingSheet.API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Post([FromBody] CreatePractitionerCommand input)
+        [AllowAnonymous]
+        public async Task<ActionResult> Post([FromBody] CreatePractitionerCommand command)
         {
-
-            PractitionerInputModelValidator validator = new();
-
-            var resultValidator = await validator.ValidateAsync(input);
-
-            if (!resultValidator.IsValid)
-            {
-                var messageError = resultValidator
-                .Errors
-                    .Select(e => new MessageError(e.ErrorCode, e.ErrorMessage));
-
-                return BadRequest(messageError);
-            }
-
-            var command = new CreatePractitionerCommand(input.Name, input.BirthDate, input.Email, input.Password);
 
             var practitionerId = await _mediator.Send(command);
 
@@ -73,23 +62,10 @@ namespace TrainingSheet.API.Controllers
         }
 
         [HttpPut("{id}/update")]
-        public async Task<ActionResult> Put([FromRoute] int id, [FromBody] UpdatePractitionerCommand input)
+        public async Task<ActionResult> Put([FromRoute] int id, [FromBody] UpdatePractitionerCommand command)
         {
-            PractitionerInputUpdateModelValidate validator = new();
 
-            var resultValidator = await validator.ValidateAsync(input);
-
-            if (!resultValidator.IsValid)
-            {
-
-                var messageError = resultValidator
-                .Errors
-                    .Select(e => new MessageError(e.ErrorCode, e.ErrorMessage));
-
-                return BadRequest(messageError);
-            }
-
-            await _mediator.Send(input);
+            await _mediator.Send(command);
 
             return NoContent();
         }
@@ -103,6 +79,21 @@ namespace TrainingSheet.API.Controllers
             await _mediator.Send(command);
 
             return NoContent();
+        }
+
+        [HttpPut]
+        [AllowAnonymous]
+        [Route("Login")]
+
+        public async Task<ActionResult> Login(LoginPractitionerCommand command)
+        {
+            var token = await _mediator.Send(command);
+
+            return Ok(new
+            {
+                Token = token,
+                Email = command.Email
+            });
         }
 
 

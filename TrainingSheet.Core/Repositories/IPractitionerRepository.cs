@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,7 @@ namespace TrainingSheet.Core.Repositories
         public void UpdateAsync();
         public IList<Practitioner> GetAllAsync();
         public Task<Practitioner> GetByIdAsync(int id);
+        public Task<Practitioner> GetByEmailAndPassword(string email, string password);
 
     }
 }

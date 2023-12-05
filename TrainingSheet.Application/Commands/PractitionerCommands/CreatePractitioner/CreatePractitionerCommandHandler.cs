@@ -27,8 +27,7 @@ namespace TrainingSheet.Application.Commands.PractitionerCommands.CreatePractiti
         public async Task<int> Handle(CreatePractitionerCommand request, CancellationToken cancellationToken)
         {
             var passwordEncrypt = _authService.EncryptPassword(request.Password);
-
-            var practitioner = new Practitioner(request.Name, request.BirthDate, request.Email, passwordEncrypt);
+            var practitioner = new Practitioner(request.FullName, request.BirthDate, request.Email, passwordEncrypt);
 
             var id = await _repository.CreateAsync(practitioner);
 

@@ -57,6 +57,14 @@ namespace TrainingSheet.Infraestructure.Repositories
             return practitioner;
         }
 
+        public async Task<Practitioner> GetByEmailAndPassword(string email, string password)
+        {
+            return await _dbContext
+                .Practitioners
+                .Where(p => p.Email == email && p.Password == password)
+                .SingleAsync();
+        }
+
         public void UpdateAsync()
         {
             _dbContext.SaveChanges();

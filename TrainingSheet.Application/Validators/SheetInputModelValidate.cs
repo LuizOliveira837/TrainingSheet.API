@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TrainingSheet.Application.Commands.SheetCommands.CreateSheet;
 using TrainingSheet.Application.InputModels.InputSheet;
 
 namespace TrainingSheet.Application.Validators
 {
-    public class SheetInputModelValidate : AbstractValidator<SheetInputModel>
+    public class SheetInputModelValidate : AbstractValidator<CreateSheetCommand>
     {
         public SheetInputModelValidate()
         {

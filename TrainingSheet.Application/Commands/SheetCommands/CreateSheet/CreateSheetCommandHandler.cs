@@ -10,7 +10,7 @@ using TrainingSheet.Core.Models;
 using TrainingSheet.Core.Repositories;
 using TrainingSheet.Infraestructure.Persistence;
 
-namespace TrainingSheet.Application.Commands.TrainingSheetCommands
+namespace TrainingSheet.Application.Commands.SheetCommands.CreateSheet
 {
     public class CreateSheetCommandHandler : IRequestHandler<CreateSheetCommand, int>
     {
