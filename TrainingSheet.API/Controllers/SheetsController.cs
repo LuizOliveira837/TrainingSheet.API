@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using TrainingSheet.Application.Commands.SheetCommands.AddExerciseSheet;
 using TrainingSheet.Application.Commands.SheetCommands.CreateSheet;
 using TrainingSheet.Application.Commands.SheetCommands.DisableSheet;
-using TrainingSheet.Application.Commands.TrainingSheetCommands;
 using TrainingSheet.Application.InputModels.InputSheet;
 using TrainingSheet.Application.Querys.SheetGetById;
 using TrainingSheet.Application.Querys.SheetGetSheetsExercises;
