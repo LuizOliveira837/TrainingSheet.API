@@ -1,4 +1,5 @@
-﻿using MediatR.Pipeline;
+﻿using FluentValidation;
+using MediatR.Pipeline;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,12 +13,16 @@ namespace TrainingSheet.Application.Commands.SheetCommands.CreateSheet
 {
     public class CreateSheetCommandPreHandler : IRequestPreProcessor<CreateSheetCommand>
     {
+        private readonly IValidator<CreateSheetCommand> _validator;
+
+        public CreateSheetCommandPreHandler(IValidator<CreateSheetCommand> validator)
+        {
+            _validator = validator;
+        }
         public async Task Process(CreateSheetCommand request, CancellationToken cancellationToken)
         {
 
-            SheetInputModelValidate validator = new();
-
-            var resultValidator = await validator.ValidateAsync(request);
+            var resultValidator = await _validator.ValidateAsync(request);
 
             if (!resultValidator.IsValid)
             {
@@ -25,7 +30,7 @@ namespace TrainingSheet.Application.Commands.SheetCommands.CreateSheet
                 .Errors
                     .Select(e => new MessageError(e.ErrorCode, e.ErrorMessage));
 
-                throw new Exception(messageError.ToString());
+                throw new Exception(message: messageError.ToString());
             }
 
 

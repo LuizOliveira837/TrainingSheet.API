@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using FluentValidation;
+using MediatR;
 using MediatR.Pipeline;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,12 @@ namespace TrainingSheet.Application.Commands.ExerciseCommands.UpdateExercise
 {
     public class UpdateExerciseCommandPreHandler : IRequestPreProcessor<UpdateExerciseCommand>
     {
+        private readonly IValidator<UpdateExerciseCommand> _validator;
+
+        public UpdateExerciseCommandPreHandler(IValidator<UpdateExerciseCommand> validator)
+        {
+            _validator = validator;
+        }
 
         public async Task Process(UpdateExerciseCommand request, CancellationToken cancellationToken)
         {

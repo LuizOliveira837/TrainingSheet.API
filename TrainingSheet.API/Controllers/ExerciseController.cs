@@ -73,20 +73,6 @@ namespace TrainingSheet.API.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult> Update([FromRoute] int id, [FromBody] CreateExerciseCommand command)
         {
-            ExerciseInputModelValidator validator = new();
-
-            var resultValidator = await validator.ValidateAsync(command);
-
-            if (!resultValidator.IsValid)
-            {
-
-                var messageError = resultValidator
-                .Errors
-                    .Select(e => new MessageError(e.ErrorCode, e.ErrorMessage));
-
-                return BadRequest(messageError);
-            }
-
             await _mediator.Send(command);
 
             return NoContent();

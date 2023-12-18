@@ -1,4 +1,5 @@
-﻿using MediatR.Pipeline;
+﻿using FluentValidation;
+using MediatR.Pipeline;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,13 +11,18 @@ using TrainingSheet.Core.Error;
 
 namespace TrainingSheet.Application.Commands.PractitionerCommands.UpdatePractitioner
 {
+
     public class UpdatePractitionerCommandPreHandler : IRequestPreProcessor<UpdatePractitionerCommand>
     {
+        public readonly IValidator<UpdatePractitionerCommand> _validator;
+        public UpdatePractitionerCommandPreHandler(IValidator<UpdatePractitionerCommand> validator)
+        {
+            _validator = validator;
+        }
         public async Task Process(UpdatePractitionerCommand request, CancellationToken cancellationToken)
         {
-            PractitionerInputUpdateModelValidate validator = new();
 
-            var resultValidator = await validator.ValidateAsync(request);
+            var resultValidator = await _validator.ValidateAsync(request);
 
             if (!resultValidator.IsValid)
             {

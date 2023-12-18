@@ -92,7 +92,7 @@ namespace TrainingSheet.API.Controllers
             return Ok(new
             {
                 Token = token,
-                Email = command.Email
+                command.Email
             });
         }
 

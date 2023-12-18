@@ -64,7 +64,7 @@ namespace TrainingSheet.Infraestructure.Repositories
             var sheet = await _dbContext
                 .Sheets
                 .Where(s => s.Id == id && s.Status == Core.Enums.StatusEntity.Active)
-                .Include(s => s.PractitionerId)
+                .Include(s => s.Practitioner)
                 .SingleAsync(s => s.Id == id);
 
             return sheet;

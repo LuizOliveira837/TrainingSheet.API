@@ -11,13 +11,18 @@ using TrainingSheet.Core.Error;
 
 namespace TrainingSheet.Application.Commands.ExerciseCommands.CreateExercise
 {
-    internal class CreateExerciseCommandPreHandler : IRequestPreProcessor<CreateExerciseCommand>
+    public class CreateExerciseCommandPreHandler : IRequestPreProcessor<CreateExerciseCommand>
     {
+        private readonly IValidator<CreateExerciseCommand> _validator;
+
+        public CreateExerciseCommandPreHandler(IValidator<CreateExerciseCommand> validator)
+        {
+            _validator = validator;
+        }
         public async Task Process(CreateExerciseCommand request, CancellationToken cancellationToken)
         {
-            ExerciseInputModelValidator validator = new();
+            var resultValidator = await _validator.ValidateAsync(request);
 
-            var resultValidator = await validator.ValidateAsync(request);
             if (!resultValidator.IsValid)
             {
 
