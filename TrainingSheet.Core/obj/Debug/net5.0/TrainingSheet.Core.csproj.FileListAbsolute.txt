@@ -10,3 +10,16 @@ C:\Users\Luiz.Rocha\source\repos\LuisFelipeCurso\TrainingSheet.API\TrainingSheet
 C:\Users\Luiz.Rocha\source\repos\LuisFelipeCurso\TrainingSheet.API\TrainingSheet.Core\obj\Debug\net5.0\refint\TrainingSheet.Core.dll
 C:\Users\Luiz.Rocha\source\repos\LuisFelipeCurso\TrainingSheet.API\TrainingSheet.Core\obj\Debug\net5.0\TrainingSheet.Core.pdb
 C:\Users\Luiz.Rocha\source\repos\LuisFelipeCurso\TrainingSheet.API\TrainingSheet.Core\obj\Debug\net5.0\ref\TrainingSheet.Core.dll
+C:\DevProjects\TrainingSheet.Core\bin\Debug\net5.0\TrainingSheet.Core.deps.json
+C:\DevProjects\TrainingSheet.Core\bin\Debug\net5.0\TrainingSheet.Core.dll
+C:\DevProjects\TrainingSheet.Core\bin\Debug\net5.0\TrainingSheet.Core.pdb
+C:\DevProjects\TrainingSheet.Core\obj\Debug\net5.0\TrainingSheet.Core.csproj.AssemblyReference.cache
+C:\DevProjects\TrainingSheet.Core\obj\Debug\net5.0\TrainingSheet.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\DevProjects\TrainingSheet.Core\obj\Debug\net5.0\TrainingSheet.Core.AssemblyInfoInputs.cache
+C:\DevProjects\TrainingSheet.Core\obj\Debug\net5.0\TrainingSheet.Core.AssemblyInfo.cs
+C:\DevProjects\TrainingSheet.Core\obj\Debug\net5.0\TrainingSheet.Core.csproj.CoreCompileInputs.cache
+C:\DevProjects\TrainingSheet.Core\obj\Debug\net5.0\TrainingSheet.Core.sourcelink.json
+C:\DevProjects\TrainingSheet.Core\obj\Debug\net5.0\TrainingSheet.Core.dll
+C:\DevProjects\TrainingSheet.Core\obj\Debug\net5.0\refint\TrainingSheet.Core.dll
+C:\DevProjects\TrainingSheet.Core\obj\Debug\net5.0\TrainingSheet.Core.pdb
+C:\DevProjects\TrainingSheet.Core\obj\Debug\net5.0\ref\TrainingSheet.Core.dll
